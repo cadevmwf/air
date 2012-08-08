@@ -1,2 +1,34 @@
-<h1>Flights#index</h1>
-<p>Find me in app/views/flights/index.html.erb</p>
+<h2>Daily Flight Schedule</h2>
+
+<div id="search">
+	<label for="keyword">Search:</label><input type="text" name="keyword" placeholder="Enter an Airport Code" size="30">
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>
+      <th>Flight Number</th>
+      <th>Leaves</th>
+      <th>Time</th>
+      <th>Arrives</th>
+      <th>Time</th>
+      <th>Seats Remaining</th>
+      <th>Miles</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @flights.each do |flight| %>
+      <tr>
+        <td><button>Book Now</button></td>
+        <td><%= flight.number %></td>
+        <td><%= flight.departure_airport_code %></td>
+        <td><%= flight.departs_at.localtime.strftime("%l:%M %P") %></td>
+        <td><%= flight.arrival_airport_code %></td>
+        <td><%= flight.arrives_at.localtime.strftime("%l:%M %P") %></td>
+        <td>60</td>
+        <td><%= flight.distance %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
