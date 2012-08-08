@@ -6,7 +6,7 @@ class CreateFlights < ActiveRecord::Migration
       t.time    :departs_at
       t.string  :arrival_airport_code
       t.integer :distance
-
+      t.integer :seats_remaining, :default => 60
       t.timestamps
     end
   end

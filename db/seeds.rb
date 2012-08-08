@@ -6,7 +6,7 @@ if Rails.env.development?
   
   codes = ['ORD', 'JFK', 'BOS', 'LAX']
   
-  10.times do 
+  100.times do 
     departure_code, arrival_code = codes.sample(2)
     departure_time = rand(8..20)
     flight_number = rand(100..999)
