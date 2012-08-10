@@ -1,5 +1,7 @@
 Air::Application.routes.draw do
   
+  resources :reservations
+
   get "sessions/new", :as => :signin
   post "sessions/create"
   get "sessions/destroy", :as => :signout

@@ -1,0 +1,21 @@
+<p>
+  <b>Flight:</b>
+  <%= @reservation.flight.number %>
+  <p>From: <%= @reservation.flight.departure_airport_code %></p>
+  <p>To: <%= @reservation.flight.arrival_airport_code %></p>
+  <p>On: <%= @reservation.departs_on %></p>
+</p>
+
+<p>
+  <b>Card number:</b>
+  <%= @reservation.card_number %>
+</p>
+
+<p>
+  <b>Departs on:</b>
+  <%= @reservation.departs_on %>
+</p>
+
+
+<%= link_to 'Edit', edit_reservation_path(@reservation) %> |
+<%= link_to 'Back', reservations_path %>
