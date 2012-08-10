@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     user = User.find_by_email(params[:email])
     if user
       if user.authenticate(params[:password])
-        session[:zebra] = user.id
+        session[:user_id] = user.id
         redirect_to root_url, notice: "Welcome Back!"
       else
         redirect_to root_url, notice: "Wrong password!"
@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session[:zebra] = nil
+    session[:user_id] = nil
     redirect_to root_url
   end
 end
