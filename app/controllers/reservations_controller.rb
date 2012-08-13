@@ -46,6 +46,9 @@ class ReservationsController < ApplicationController
     
     respond_to do |format|
       if @reservation.save
+        @reservation.user.miles_earned += @reservation.flight.distance
+        @reservation.user.save
+        
         format.html { redirect_to @reservation, notice: 'Reservation was successfully created.' }
         format.json { render json: @reservation, status: :created, location: @reservation }
       else

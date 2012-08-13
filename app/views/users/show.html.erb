@@ -11,10 +11,24 @@
 </p>
 
 <p>
-  <b>Frequent Flyer Miles: 0</b>
-  <em>Maybe you should go somewhere!</em>
+  <b>Frequent Flyer Miles:
+    <%= @user.miles_earned %>
+  </b>
+
 </p>
 
+<h3>Reservations</h3>
+<ul>
+<% @user.reservations.each do |reservation| %>
+  <li><%= reservation.departs_on %>: 
+    Flight #<%= reservation.flight.number %>
+    Miles: <%= reservation.flight.distance %></li>
+<% end %>
+</ul>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+
+
+
+
+
+

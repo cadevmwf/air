@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120810152907) do
+ActiveRecord::Schema.define(:version => 20120813132424) do
 
   create_table "flights", :force => true do |t|
     t.integer  "number"
@@ -37,8 +37,9 @@ ActiveRecord::Schema.define(:version => 20120810152907) do
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+    t.integer  "miles_earned",    :default => 0
   end
 
 end
