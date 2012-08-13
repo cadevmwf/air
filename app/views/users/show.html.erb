@@ -22,7 +22,9 @@
 <% @user.reservations.each do |reservation| %>
   <li><%= reservation.departs_on %>: 
     Flight #<%= reservation.flight.number %>
-    Miles: <%= reservation.flight.distance %></li>
+    Miles: <%= reservation.flight.distance %>
+    <%= link_to "Cancel", reservation_url(reservation), :method => :delete, :confirm => 'Awww, really?' %>
+  </li>
 <% end %>
 </ul>
 

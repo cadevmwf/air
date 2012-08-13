@@ -81,7 +81,7 @@ class ReservationsController < ApplicationController
     @reservation.destroy
 
     respond_to do |format|
-      format.html { redirect_to reservations_url }
+      format.html { redirect_to user_url(@reservation.user) }
       format.json { head :no_content }
     end
   end
