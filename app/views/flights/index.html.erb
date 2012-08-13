@@ -3,8 +3,16 @@
 <h2>Daily Flight Schedule</h2>
 
 <div id="search">
+  <%= form_tag flights_url, method: :get do %>
 	<label for="keyword">Search:</label><input type="text" name="keyword" placeholder="Enter an Airport Code" size="30">
+  <%= submit_tag 'Search' %>
+  <% end %>
 </div>
+
+<% if @page_number > 0 %>
+<%= link_to "< Prev", root_url(:page => @page_number - 1) %>
+<% end %>
+<%= link_to "Next >", root_url(:page => @page_number + 1) %>
 
 <table>
   <thead>

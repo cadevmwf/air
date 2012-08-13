@@ -8,7 +8,7 @@ Air::Application.routes.draw do
 
   resources :users
 
-  get "flights/index" => 'flights#index'
+  get "flights/index" => 'flights#index', :as => :flights
 
   root to: 'flights#index'
   
