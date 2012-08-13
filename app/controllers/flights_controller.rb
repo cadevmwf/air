@@ -9,6 +9,8 @@ class FlightsController < ApplicationController
     @page_number = params[:page].to_i
     @page_number = 1 if @page_number < 1
     
+    @flights = Flight.limit(4) if @flights.nil?
+    
     @flights = @flights.offset((@page_number - 1) * 4).limit(4)
     
   end
