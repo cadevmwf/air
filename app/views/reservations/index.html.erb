@@ -13,8 +13,8 @@
 
 <% @reservations.each do |reservation| %>
   <tr>
-    <td><%= reservation.flight_id %></td>
-    <td><%= reservation.user_id %></td>
+    <td><%= reservation.flight.number %></td>
+    <td><%= reservation.user.name %></td>
     <td><%= reservation.card_number %></td>
     <td><%= reservation.departs_on %></td>
     <td><%= link_to 'Show', reservation %></td>
