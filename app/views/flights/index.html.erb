@@ -9,10 +9,7 @@
   <% end %>
 </div>
 
-<% if @page_number > 0 %>
-<%= link_to "< Prev", root_url(:page => @page_number - 1) %>
-<% end %>
-<%= link_to "Next >", root_url(:page => @page_number + 1) %>
+<%= paginate @flights %>
 
 <table>
   <thead>
