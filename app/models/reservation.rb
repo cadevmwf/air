@@ -3,6 +3,7 @@ class Reservation < ActiveRecord::Base
   
   belongs_to :flight
   belongs_to :user
+  belongs_to :passenger, :class_name => 'User', :foreign_key => :user_id
   
   validates :card_number, :presence => true
   validates :departs_on, :presence => true
@@ -12,8 +13,10 @@ class Reservation < ActiveRecord::Base
   after_destroy :decrease_frequent_flyer_miles
   
   def decrease_frequent_flyer_miles
-    self.user.miles_earned -= self.flight.distance
-    self.user.save
+    if self.user
+      self.user.miles_earned -= self.flight.distance
+      self.user.save
+    end
   end
   # CHALLENGE: As a user, when I cancel a reservation,
   # it should be removed from my profile
