@@ -6,6 +6,13 @@ class User < ActiveRecord::Base
   has_many :reservations
   has_many :flights, :through => :reservations
 
+  scope :admins, where(:admin => true)
+  scope :nonadmins, where(:admin => false)
+  
+  # def self.admins
+  #   where(:admin => true)
+  # end
+
   # def miles_earned
   #   miles = 0
   #   self.flights.each do |flight|

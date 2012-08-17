@@ -1,4 +1,13 @@
 class ReservationsController < ApplicationController
+  
+  before_filter :require_admin, :only => [:index, :show]
+  
+  def require_admin
+    if session[:user_id].nil? || !User.find_by_id(session[:user_id]).admin? 
+      redirect_to root_url, notice: 'You must be an admin to see that!'
+    end
+  end
+  
   # GET /reservations
   # GET /reservations.json
   def index
@@ -46,6 +55,10 @@ class ReservationsController < ApplicationController
     
     respond_to do |format|
       if @reservation.save
+        
+        email = ReservationMailer.confirm(@reservation)
+        email.deliver
+        
         # @reservation.user.miles_earned += @reservation.flight.distance
         # @reservation.user.save
         

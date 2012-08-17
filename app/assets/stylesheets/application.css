@@ -21,6 +21,11 @@ body {
   background: #EEE;
 }
 
+#moolah {
+  color: green;
+  font-weight: bold;
+}
+
 #container {
   background: #FFF;
   padding: 12px;

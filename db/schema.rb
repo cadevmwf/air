@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120815150919) do
+ActiveRecord::Schema.define(:version => 20120817144449) do
 
   create_table "airports", :force => true do |t|
     t.string   "code"
@@ -46,9 +46,10 @@ ActiveRecord::Schema.define(:version => 20120815150919) do
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
     t.integer  "miles_earned",    :default => 0
+    t.boolean  "admin",           :default => false
   end
 
 end

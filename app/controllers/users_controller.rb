@@ -1,4 +1,13 @@
 class UsersController < ApplicationController
+  
+  before_filter :require_login, :only => [:show, :destroy]
+  
+  def require_login
+    if session[:user_id] != params[:id].to_i
+      redirect_to root_url, notice: 'Nice try!'
+    end
+  end
+  
   # GET /users
   # GET /users.json
   def index
@@ -10,9 +19,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def profile
+    @user = User.find(session[:user_id])
+    render 'show'
+  end
+  
   # GET /users/1
   # GET /users/1.json
-  def show
+  def show  
     @user = User.find(params[:id])
 
     respond_to do |format|
@@ -44,7 +58,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to user_url(@user), notice: 'User was successfully created.' }
         format.json { render json: @user, status: :created, location: @user }
       else
         format.html { render action: "new" }
